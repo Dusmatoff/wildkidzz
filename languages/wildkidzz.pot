@@ -1,0 +1,153 @@
+# Copyright (C) 2017 Automattic
+# This file is distributed under the GNU General Public License v2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: _s 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/tags/_s\n"
+"POT-Creation-Date: 2016-12-23 16:00+0100\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
+"Last-Translator:\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"X-Generator: grunt-wp-i18n 0.5.4\n"
+
+#: functions.php
+msgid "Primary"
+msgstr ""
+
+msgid "Footer"
+msgstr ""
+
+msgid "Reviews"
+msgstr ""
+
+msgid "Review"
+msgstr ""
+
+msgid "Add review"
+msgstr ""
+
+#: header.php
+msgid "Contact Us"
+msgstr ""
+
+msgid "Go to Checkout"
+msgstr ""
+
+#: footer.php
+msgid "Contact"
+msgstr ""
+
+msgid "Customer Info"
+msgstr ""
+
+msgid "Follow Us"
+msgstr ""
+
+msgid "Site developed by"
+msgstr ""
+
+#: 404.php
+msgid "Page not found'"
+msgstr ""
+
+msgid "Sorry, but we have trouble finding the page you are requesting"
+msgstr ""
+
+msgid "Back to main page"
+msgstr ""
+
+#: template-parts/share.php
+msgid "Share:"
+msgstr ""
+
+#: woocommerce/single-product/tabs/tabs.php
+msgid "More Information"
+msgstr ""
+
+#: woocommerce/single-product/price.php
+msgid "This amount is incl. VAT"
+msgstr ""
+
+msgid "Dimensions"
+msgstr ""
+
+#: woocommerce/single-product/up-sells.php
+msgid "Other suggestions"
+msgstr ""
+
+#: woocommerce/content-single-product.php
+msgid "Temporary free shipping throughout the Netherlands (Belgium € 20)"
+msgstr ""
+
+msgid "Fast delivery"
+msgstr ""
+
+msgid "Similar Products"
+msgstr ""
+
+#: woocommerce/archive-product.php
+msgid "All"
+msgstr ""
+
+msgid "Show more"
+msgstr ""
+
+#: woocommerce/loop/price.php
+msgid "From"
+msgstr ""
+
+#: woocommerce/cart/mini-cart.php
+msgid "Options"
+msgstr ""
+
+msgid "Subtotal"
+msgstr ""
+
+#: woocommerce/checkout/form-checkout.php
+msgid "Contact Info"
+msgstr ""
+
+msgid "Promo code"
+msgstr ""
+
+msgid "Enter promo code"
+msgstr ""
+
+msgid "Payment Option"
+msgstr ""
+
+
+#: woocommerce/checkout/thankyou.php
+msgid "Home"
+msgstr ""
+
+msgid "Thank you for purchase"
+msgstr ""
+
+msgid "Your order has been successfully completed"
+msgstr ""
+
+msgid "Order details"
+msgstr ""
+
+msgid "Order Number"
+msgstr ""
+
+msgid "Name"
+msgstr ""
+
+msgid "Address"
+msgstr ""
+
+msgid "Shipping Cost"
+msgstr ""
+
+msgid "Total"
+msgstr ""
+
+msgid "Print Order"
+msgstr ""
+

@@ -1,0 +1,35 @@
+/*!
+Theme Name: wildkidzz
+Theme URI: http://underscores.me/
+Author: Redstone.Media
+Author URI: https://redstone.media/en/
+Description: Wordress theme for WildKidzz store
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: LICENSE
+Text Domain: wildkidzz
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+
+wildkidzz is based on Underscores https://underscores.me/, (C) 2012-2017 Automattic, Inc.
+Underscores is distributed under the terms of the GNU GPL v2 or later.
+
+Normalizing styles have been helped along thanks to the fine work of
+Nicolas Gallagher and Jonathan Neal https://necolas.github.io/normalize.css/
+*/
+blockquote p{
+    color: #292929!important;
+    font-size: 24px!important;
+    line-height: 38px!important;
+    font-weight: 400!important;
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 0px!important;
+}
+.breadcrumbs li {
+    display: inline-block;
+    font-size: 14px;
+    line-height: 24px;
+    color: #a3a3a3;
+    font-weight: 400;
+}

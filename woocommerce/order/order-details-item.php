@@ -33,20 +33,27 @@ if ( ! apply_filters( 'woocommerce_order_item_visible', true, $item ) ) {
             <h6 class="title h6 product-title"><?php echo $item->get_name(); ?></h6>
             <div class="product-col-price">
                 <div class="color-wrapp blue"><i></i>Blue</div>
-                <div class="current-price">SINGLE-PRICE<?php ?> x <b><?php echo $item->get_quantity(); ?></b></div>
+                <div class="current-price"><span class="woocommerce-Price-currencySymbol">€</span> <?php echo $order->get_item_total($item); ?><?php ?> x <b><?php echo $item->get_quantity(); ?></b></div>
             </div>
         </div>
         <div class="cost-total"><?php echo $order->get_formatted_line_subtotal( $item ); ?></div>
         <div class="product-info-options">
             <div class="product-options">
                 <div class="input-label with-icon">Options <b></b></div>
-                <ul>
+                <?php
+                do_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order, false );
+
+                wc_display_item_meta( $item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+
+                do_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order, false );
+                ?>
+                <!--<ul>
                     <li>Size: <span>Small bed</span></li>
                     <li>Bed kleur bolletjes: <span>goud</span></li>
                     <li>Bed lade: <span>met lade</span> <i>+ €109</i></li>
                     <li>Bed lattenbodem: <span>met lattenbodem</span><i>+ €25,00</i></li>
                     <li>Bed ledstrip: <span>ledstrip met gekleurd licht</span><i>+ €30</i></li>
-                </ul>
+                </ul>-->
             </div>
         </div>
     </div>

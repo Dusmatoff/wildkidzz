@@ -48,40 +48,36 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
             <div class="row">
                 <div class="col-12 col-lg-5">
                     <div class="order-wrapp-left-column">
-                        <div class="order-contact-information">
-                            <div class="h6 title"><?php esc_html_e('Contact Info', 'wildkidzz') ?></div>
-                            <div class="contact-information-form" id="customer_details">
-                                <?php if ($checkout->get_checkout_fields()) : ?>
+                        <?php if ($checkout->get_checkout_fields()) : ?>
 
-                                    <?php do_action('woocommerce_checkout_before_customer_details'); ?>
+                            <?php do_action('woocommerce_checkout_before_customer_details'); ?>
 
-                                    <?php do_action('woocommerce_checkout_billing'); ?>
+                            <?php do_action('woocommerce_checkout_billing'); ?>
 
-                                    <?php do_action('woocommerce_checkout_shipping'); ?>
+                            <?php do_action('woocommerce_checkout_shipping'); ?>
 
-                                    <?php do_action('woocommerce_checkout_after_customer_details'); ?>
+                            <?php do_action('woocommerce_checkout_after_customer_details'); ?>
 
-                                <?php endif; ?>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
                 <div class="col-12 col-lg-7 offset-lg-0 col-xl-6 offset-xl-1">
                     <div class="order-wrapp-right-column">
                         <div class="order-top-caption">
-                            <?php do_action( 'woocommerce_checkout_before_order_review_heading' ); ?>
+                            <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
                             <div class="h6 title">Your Order</div>
                             <div class="change-order open-popup" data-rel="2">Edit</div>
-
-                            <?php do_action('woocommerce_checkout_before_order_review'); ?>
-
-                            <div id="order_review" class="woocommerce-checkout-review-order">
-                                <?php do_action('woocommerce_checkout_order_review'); ?>
-                            </div>
-
-                            <?php do_action('woocommerce_checkout_after_order_review'); ?>
-
                         </div>
+                        <?php do_action('woocommerce_checkout_before_order_review'); ?>
+
+                        <div id="order_review" class="order-list-product-wrapp">
+                            <?php do_action('woocommerce_checkout_order_review'); ?>
+                        </div>
+
+
+                        <?php do_action('woocommerce_checkout_after_order_review'); ?>
+
+
                     </div>
                 </div>
             </div>

@@ -18,6 +18,9 @@
 
 defined( 'ABSPATH' ) || exit;
 ?>
+<div class="order-contact-information">
+    <div class="h6 title"><?php esc_html_e('Contact Info', 'wildkidzz') ?></div>
+    <div class="contact-information-form" id="customer_details">
 <div class="woocommerce-billing-fields">
 	<!--<?php if ( wc_ship_to_billing_address_only() && WC()->cart->needs_shipping() ) : ?>
 
@@ -72,3 +75,5 @@ defined( 'ABSPATH' ) || exit;
 		<?php do_action( 'woocommerce_after_checkout_registration_form', $checkout ); ?>
 	</div>
 <?php endif; ?>
+    </div>
+</div>

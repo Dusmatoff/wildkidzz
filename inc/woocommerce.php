@@ -340,3 +340,77 @@ function wildkidzz_dropdown_variable( $html, $args ){
 
     return $html;
 }
+
+// Remove unusing fileds in checkout
+add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
+
+// Our hooked in function - $fields is passed via the filter!
+function custom_override_checkout_fields( $fields ) {
+    unset($fields['billing']['billing_last_name']);
+    unset($fields['billing']['billing_address_2']);
+    unset($fields['shipping']['billing_last_name']);
+    unset($fields['shipping']['billing_address_2']);
+
+    return $fields;
+}
+
+//Add classes for checkout fields
+add_filter( 'woocommerce_form_field_args', 'custom_classes_for_fields' );
+function custom_classes_for_fields( $fields ) {
+    $fields['label_class'] = array('input-label');
+    $fields['input_class'] = array('input-field');
+
+    return $fields;
+}
+
+//Custom ordering checkout fields
+add_filter( 'woocommerce_checkout_fields', 'custom_order_checkout_fields' );
+function custom_order_checkout_fields( $checkout_fields ) {
+    $checkout_fields['billing']['billing_first_name']['priority'] = 10;
+    $checkout_fields['billing']['billing_company']['priority'] = 20;
+    $checkout_fields['billing']['billing_email']['priority'] = 30;
+    $checkout_fields['billing']['billing_phone']['priority'] = 40;
+    $checkout_fields['billing']['billing_country']['priority'] = 50;
+    $checkout_fields['billing']['billing_postcode']['priority'] = 60;
+    $checkout_fields['billing']['billing_city']['priority'] = 70;
+    $checkout_fields['billing']['billing_address_1']['priority'] = 80;
+
+    return $checkout_fields;
+}
+
+//Address fields
+add_filter( 'woocommerce_default_address_fields', 'address_fields_classes' );
+function address_fields_classes( $address_fields ) {
+    $address_fields['first_name']['class'] = array('input-field-wrapp');
+    $address_fields['first_name']['label'] = 'Your Name';
+    $address_fields['first_name']['placeholder'] = 'Name*';
+
+    $address_fields['company']['class'] = array('input-field-wrapp');
+    $address_fields['company']['placeholder'] = 'Apple';
+
+    $address_fields['address_1']['class'] = array('input-field-wrapp');
+    $address_fields['address_1']['label'] = 'Address';
+    $address_fields['address_1']['placeholder'] = 'e.g. 87 Jaden Mountain, apr.2';
+
+    $address_fields['postcode']['class'] = array('input-field-wrapp');
+    $address_fields['postcode']['label'] = 'Zip Code';
+    $address_fields['postcode']['placeholder'] = 'e.g. 1111';
+
+    $address_fields['city']['class'] = array('input-field-wrapp');
+    $address_fields['city']['label'] = 'City';
+    $address_fields['city']['placeholder'] = 'Enter City';
+
+    $address_fields['email']['class'] = array('input-field-wrapp');
+    $address_fields['email']['placeholder'] = 'Email';
+
+    return $address_fields;
+}
+
+//Billing fields
+add_filter( 'woocommerce_billing_fields', 'billing_fields_classes' );
+function billing_fields_classes( $billing_fields ){
+    $billing_fields['billing_phone']['class'] = array('input-field-wrapp');
+    $billing_fields['billing_email']['class'] = array('input-field-wrapp');
+
+    return $billing_fields;
+}

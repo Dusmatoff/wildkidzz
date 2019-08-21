@@ -33,3 +33,7 @@ blockquote p{
     color: #a3a3a3;
     font-weight: 400;
 }
+.input-label span {
+    color: #a3a3a3;
+    font-family: 'Poppins', sans-serif;
+}

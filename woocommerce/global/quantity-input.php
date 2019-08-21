@@ -31,19 +31,18 @@ if ( $max_value && $min_value === $max_value ) {
     <div class="cost-amount">
 	<div class="quantity custom-input-number size-2">
 		<?php do_action( 'woocommerce_before_quantity_input_field' ); ?>
-		<!--<label class="screen-reader-text" for="<?php echo esc_attr( $input_id ); ?>"><?php echo esc_attr( $label ); ?></label>-->
+		<!--<label class="screen-reader-text" for="<?php //echo esc_attr( $input_id ); ?>"><?php //echo esc_attr( $label ); ?></label>-->
         <button type="button" class="decrement"><span></span></button>
 		<input
 			type="number"
 			id="<?php echo esc_attr( $input_id ); ?>"
-			class="<?php echo esc_attr( join( ' ', (array) $classes ) ); ?> input-field"
+			class="input-field <?php echo esc_attr( join( ' ', (array) $classes ) ); ?> "
 			step="<?php echo esc_attr( $step ); ?>"
 			min="<?php echo esc_attr( $min_value ); ?>"
 			max="<?php echo esc_attr( 0 < $max_value ? $max_value : '' ); ?>"
 			name="<?php echo esc_attr( $input_name ); ?>"
 			value="<?php echo esc_attr( $input_value ); ?>"
 			title="<?php echo esc_attr_x( 'Qty', 'Product quantity input tooltip', 'woocommerce' ); ?>"
-			size="4"
             readonly=""
 			inputmode="<?php echo esc_attr( $inputmode ); ?>" />
         <button type="button" class="increment"><span></span></button>

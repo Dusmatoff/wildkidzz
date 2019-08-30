@@ -23,18 +23,6 @@ function wildkidzz_woocommerce_setup()
 add_action('after_setup_theme', 'wildkidzz_woocommerce_setup');
 
 /**
- * WooCommerce specific scripts & stylesheets.
- *
- * @return void
- */
-function wildkidzz_woocommerce_scripts()
-{
-    wp_enqueue_style('wildkidzz-woocommerce-style', get_template_directory_uri() . '/woocommerce.css');
-}
-
-add_action('wp_enqueue_scripts', 'wildkidzz_woocommerce_scripts');
-
-/**
  * Disable the default WooCommerce stylesheet.
  *
  * Removing the default WooCommerce stylesheet and enqueing your own will
@@ -47,7 +35,7 @@ add_filter('woocommerce_enqueue_styles', '__return_empty_array');
 /**
  * Add 'woocommerce-active' class to the body tag.
  *
- * @param  array $classes CSS classes applied to the body tag.
+ * @param array $classes CSS classes applied to the body tag.
  * @return array $classes modified to include 'woocommerce-active' class.
  */
 function wildkidzz_woocommerce_active_body_class($classes)
@@ -209,7 +197,7 @@ if (!function_exists('wildkidzz_woocommerce_cart_link_fragment')) {
     {
         ob_start();
         wildkidzz_woocommerce_cart_link();
-        $fragments['a.cart-contents'] = ob_get_clean();
+        $fragments['div.header-cart-inner'] = ob_get_clean();
 
         return $fragments;
     }
@@ -227,23 +215,24 @@ if (!function_exists('wildkidzz_woocommerce_cart_link')) {
     function wildkidzz_woocommerce_cart_link()
     {
         ?>
-        <div class="header-cart-inner">
-            <?php
-            $item_count_text = sprintf(
-            /* translators: number of items in the mini cart. */
-                _n('%d item', '%d items', WC()->cart->get_cart_contents_count(), 'wildkidzz'),
-                WC()->cart->get_cart_contents_count()
-            );
-            ?>
-            <div class="cart-icon">
-                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
-                     y="0px" width="24px" height="28px" viewBox="0 0 24 28" enable-background="new 0 0 24 28"
-                     xml:space="preserve"><path
-                            d="M23.994,24.204L22.277,6.15c-0.037-0.401-0.399-0.705-0.822-0.705h-3.532C17.874,2.434,15.238,0,12,0 C8.762,0,6.126,2.434,6.077,5.445H2.545c-0.429,0-0.785,0.304-0.822,0.705L0.006,24.204C0.006,24.227,0,24.25,0,24.273 C0,26.328,2.017,28,4.501,28h14.998C21.983,28,24,26.328,24,24.273C24,24.25,24,24.227,23.994,24.204z M12,1.546 c2.324,0,4.219,1.741,4.268,3.899H7.732C7.781,3.287,9.676,1.546,12,1.546z"/></svg>
-                <div class="header-cart-amount-product"><?php echo esc_html($item_count_text); ?></div>
+            <div class="header-cart-inner">
+                <?php
+                $item_count_text = sprintf(
+                /* translators: number of items in the mini cart. */
+                    _n('%d item', '%d items', WC()->cart->get_cart_contents_count(), 'wildkidzz'),
+                    WC()->cart->get_cart_contents_count()
+                );
+                ?>
+                <div class="cart-icon cart-icon111">
+                    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                         x="0px"
+                         y="0px" width="24px" height="28px" viewBox="0 0 24 28" enable-background="new 0 0 24 28"
+                         xml:space="preserve"><path
+                                d="M23.994,24.204L22.277,6.15c-0.037-0.401-0.399-0.705-0.822-0.705h-3.532C17.874,2.434,15.238,0,12,0 C8.762,0,6.126,2.434,6.077,5.445H2.545c-0.429,0-0.785,0.304-0.822,0.705L0.006,24.204C0.006,24.227,0,24.25,0,24.273 C0,26.328,2.017,28,4.501,28h14.998C21.983,28,24,26.328,24,24.273C24,24.25,24,24.227,23.994,24.204z M12,1.546 c2.324,0,4.219,1.741,4.268,3.899H7.732C7.781,3.287,9.676,1.546,12,1.546z"/></svg>
+                    <div class="header-cart-amount-product"><?php echo WC()->cart->get_cart_contents_count() ?> </span></div>
+                </div>
+                <div class="header-cart-price"><?php echo wp_kses_data(WC()->cart->get_cart_subtotal()); ?></div>
             </div>
-            <div class="header-cart-price"><?php echo wp_kses_data(WC()->cart->get_cart_subtotal()); ?></div>
-        </div>
         <?php
     }
 }
@@ -292,16 +281,20 @@ remove_action('woocommerce_after_single_product_summary', 'woocommerce_output_re
  * Link and image in content product
  */
 add_action('woocommerce_before_shop_loop_item_title', 'wildkidzz_woocommerce_template_loop_product_thumbnail_open', 5);
-function wildkidzz_woocommerce_template_loop_product_thumbnail_open(){
+function wildkidzz_woocommerce_template_loop_product_thumbnail_open()
+{
     ?>
     <a href="<?php echo get_permalink(); ?>" class="product-link"></a>
     <div class="product-item-top">
-        <<div class="bg bg-lazy-load" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg);" data-bg="<?php echo the_post_thumbnail_url(); ?>"></div>
+    <div class="bg bg-lazy-load"
+         style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg);"
+         data-bg="<?php echo the_post_thumbnail_url(); ?>"></div>
     <?php
 }
 
 add_action('woocommerce_before_shop_loop_item_title', 'wildkidzz_woocommerce_template_loop_product_thumbnail_close', 30);
-function wildkidzz_woocommerce_template_loop_product_thumbnail_close(){
+function wildkidzz_woocommerce_template_loop_product_thumbnail_close()
+{
     ?>
     </div>
 
@@ -314,7 +307,8 @@ function wildkidzz_woocommerce_template_loop_product_thumbnail_close(){
  */
 remove_action('woocommerce_shop_loop_item_title', 'woocommerce_template_loop_product_title', 10); // Remove default display title
 add_action('woocommerce_shop_loop_item_title', 'wildkidzz_woocommerce_template_loop_product_title', 10);
-function wildkidzz_woocommerce_template_loop_product_title(){
+function wildkidzz_woocommerce_template_loop_product_title()
+{
     echo '<div class="product-item-bottom"> <div class="title h6 sm">' . get_the_title() . '</div>';
 }
 
@@ -322,7 +316,8 @@ function wildkidzz_woocommerce_template_loop_product_title(){
  * Add </div> for <div class="product-item-bottom">
  */
 add_action('woocommerce_after_shop_loop_item', 'wildkidzz_add_product_item_bottom_div');
-function wildkidzz_add_product_item_bottom_div(){
+function wildkidzz_add_product_item_bottom_div()
+{
     echo '</div>';
 }
 
@@ -331,32 +326,34 @@ function wildkidzz_add_product_item_bottom_div(){
  */
 remove_action('woocommerce_after_shop_loop_item', 'woocommerce_template_loop_add_to_cart', 10);
 
-add_filter( 'woocommerce_dropdown_variation_attribute_options_html', 'wildkidzz_dropdown_variable', 10, 2 );
-function wildkidzz_dropdown_variable( $html, $args ){
-    $show_option_none_text = $args['show_option_none'] ? $args['show_option_none'] : __( 'Choose an option', 'woocommerce' );
-    $show_option_none_html = '<option value="">' . esc_html( $show_option_none_text ) . '</option>';
+//Remove choose option in select
+/*add_filter('woocommerce_dropdown_variation_attribute_options_html', 'wildkidzz_dropdown_variable', 10, 2);
+function wildkidzz_dropdown_variable($html, $args)
+{
+    $show_option_none_text = $args['show_option_none'] ? $args['show_option_none'] : __('Choose an option', 'woocommerce');
+    $show_option_none_html = '<option value="">' . esc_html($show_option_none_text) . '</option>';
 
     $html = str_replace($show_option_none_html, '', $html);
 
     return $html;
-}
+}*/
 
 // Remove unusing fileds in checkout
-add_filter( 'woocommerce_checkout_fields' , 'custom_override_checkout_fields' );
-
-// Our hooked in function - $fields is passed via the filter!
-function custom_override_checkout_fields( $fields ) {
+add_filter('woocommerce_checkout_fields', 'custom_override_checkout_fields');
+function custom_override_checkout_fields($fields)
+{
     unset($fields['billing']['billing_last_name']);
     unset($fields['billing']['billing_address_2']);
-    unset($fields['shipping']['billing_last_name']);
-    unset($fields['shipping']['billing_address_2']);
+    unset($fields['shipping']['shipping_last_name']);
+    unset($fields['shipping']['shipping_address_2']);
 
     return $fields;
 }
 
 //Add classes for checkout fields
-add_filter( 'woocommerce_form_field_args', 'custom_classes_for_fields' );
-function custom_classes_for_fields( $fields ) {
+add_filter('woocommerce_form_field_args', 'custom_classes_for_fields');
+function custom_classes_for_fields($fields)
+{
     $fields['label_class'] = array('input-label');
     $fields['input_class'] = array('input-field');
 
@@ -364,8 +361,9 @@ function custom_classes_for_fields( $fields ) {
 }
 
 //Custom ordering checkout fields
-add_filter( 'woocommerce_checkout_fields', 'custom_order_checkout_fields' );
-function custom_order_checkout_fields( $checkout_fields ) {
+add_filter('woocommerce_checkout_fields', 'custom_order_checkout_fields');
+function custom_order_checkout_fields($checkout_fields)
+{
     $checkout_fields['billing']['billing_first_name']['priority'] = 10;
     $checkout_fields['billing']['billing_company']['priority'] = 20;
     $checkout_fields['billing']['billing_email']['priority'] = 30;
@@ -379,8 +377,9 @@ function custom_order_checkout_fields( $checkout_fields ) {
 }
 
 //Address fields
-add_filter( 'woocommerce_default_address_fields', 'address_fields_classes' );
-function address_fields_classes( $address_fields ) {
+add_filter('woocommerce_default_address_fields', 'address_fields_classes');
+function address_fields_classes($address_fields)
+{
     $address_fields['first_name']['class'] = array('input-field-wrapp');
     $address_fields['first_name']['label'] = 'Your Name';
     $address_fields['first_name']['placeholder'] = 'Name*';
@@ -407,10 +406,48 @@ function address_fields_classes( $address_fields ) {
 }
 
 //Billing fields
-add_filter( 'woocommerce_billing_fields', 'billing_fields_classes' );
-function billing_fields_classes( $billing_fields ){
+add_filter('woocommerce_billing_fields', 'billing_fields_classes');
+function billing_fields_classes($billing_fields)
+{
     $billing_fields['billing_phone']['class'] = array('input-field-wrapp');
     $billing_fields['billing_email']['class'] = array('input-field-wrapp');
 
     return $billing_fields;
+}
+
+//Disable woocommerce notices
+add_filter('wc_add_to_cart_message_html', '__return_null');
+
+//Ajax add to cart
+add_action('wp_ajax_woocommerce_ajax_add_to_cart', 'woocommerce_ajax_add_to_cart');
+add_action('wp_ajax_nopriv_woocommerce_ajax_add_to_cart', 'woocommerce_ajax_add_to_cart');
+
+function woocommerce_ajax_add_to_cart(){
+    $product_id = apply_filters('woocommerce_add_to_cart_product_id', absint($_POST['product_id']));
+    $quantity = empty($_POST['quantity']) ? 1 : wc_stock_amount($_POST['quantity']);
+    $variation_id = absint($_POST['variation_id']);
+    $passed_validation = apply_filters('woocommerce_add_to_cart_validation', true, $product_id, $quantity);
+    $product_status = get_post_status($product_id);
+
+    if ($passed_validation && WC()->cart->add_to_cart($product_id, $quantity, $variation_id) && 'publish' === $product_status) {
+        do_action('woocommerce_ajax_added_to_cart', $product_id);
+
+        if ('yes' === get_option('woocommerce_cart_redirect_after_add')) {
+            wc_add_to_cart_message(array($product_id => $quantity), true);
+        }
+
+        WC_AJAX:: get_refreshed_fragments();
+    } else {
+        $data = array(
+            'error' => true,
+            'product_url' => apply_filters('woocommerce_cart_redirect_after_error', get_permalink($product_id), $product_id));
+        echo wp_send_json($data);
+    }
+    wp_die();
+}
+
+//--ajax url
+add_action('wp_footer', 'site_ajaxurl');
+function site_ajaxurl(){
+    echo "<script>var ajax_url= '" . admin_url('admin-ajax.php') . "';</script>";
 }

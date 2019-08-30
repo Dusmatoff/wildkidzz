@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dusmatoff
- * Date: 15.08.2019
- * Time: 16:49
  * Template Name: Template
  */
 if (!defined('ABSPATH')) exit; // Exit if accessed directly

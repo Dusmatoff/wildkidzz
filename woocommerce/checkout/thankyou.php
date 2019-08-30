@@ -100,13 +100,37 @@ $order_items           = $order->get_items( apply_filters( 'woocommerce_purchase
                                         <td><?php echo $order->get_billing_address_1(); ?><?php echo $order->get_billing_address_2(); ?></td>
                                     </tr>
                                     <tr>
-                                        <td><?php esc_html_e('Subtotal', 'wildkidzz') ?></td>
-                                        <td>€ <?php echo $order->get_subtotal(); ?></td>
-                                    </tr>
-                                    <tr>
                                         <td><?php esc_html_e('Shipping Cost', 'wildkidzz') ?></td>
                                         <td>€ <?php echo $order->get_shipping_total(); ?></td>
                                     </tr>
+                                    <tr>
+                                        <td><?php esc_html_e('Subtotal', 'wildkidzz') ?></td>
+                                        <td>€ <?php echo $order->get_subtotal(); ?></td>
+                                    </tr>
+                                    <?php
+                                    if( $order->get_used_coupons() ) {
+                                        $order_subtotal = $order->get_subtotal();
+                                        $order_total = $order->get_total();
+                                        $coupon_value = $order_subtotal - $order_total;
+                                        echo '<tr>';
+                                        $coupons_count = count( $order->get_used_coupons() );
+                                        $i = 1;
+                                        $coupons_list = '';
+                                        foreach( $order->get_used_coupons() as $coupon) {
+                                            $coupons_list .=  $coupon;
+                                            if( $i < $coupons_count )
+                                            $coupons_list .= ', ';
+                                            $i++;
+                                            //$coupon_value = $coupon->get_amount();
+                                        }
+                                        
+                                        
+                                        
+                                        echo '<td>' . __('Coupons:') . ' (' . $coupons_count . ')<br>' . $coupons_list . '</td>';
+                                        echo '<td>-€ ' . $coupon_value . '</td>';  
+                                        echo '</tr>';
+                                    }
+                                    ?>
                                     <tr class="total-summ">
                                         <td><?php esc_html_e('Total', 'wildkidzz') ?></td>
                                         <td><?php echo $order->get_formatted_order_total(); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></td>

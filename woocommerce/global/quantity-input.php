@@ -27,7 +27,7 @@ if ( $max_value && $min_value === $max_value ) {
 	/* translators: %s: Quantity. */
 	$label = ! empty( $args['product_name'] ) ? sprintf( esc_html__( '%s quantity', 'woocommerce' ), wp_strip_all_tags( $args['product_name'] ) ) : esc_html__( 'Quantity', 'woocommerce' );
 	?>
-    <span class="quantity-label">Quantity</span>
+    <span class="quantity-label"><?php esc_html_e( 'Quantity', 'wildkidzz' ) ?></span>
     <div class="cost-amount">
 	<div class="quantity custom-input-number size-2">
 		<?php do_action( 'woocommerce_before_quantity_input_field' ); ?>

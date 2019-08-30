@@ -20,6 +20,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/*if ( function_exists('yoast_breadcrumb') ) {
+  yoast_breadcrumb( '<p id="breadcrumbs" class="breadcrumbs xs-hide">','</p>' );
+}*/
 if ( ! empty( $breadcrumb ) ) {
 
 	echo $wrap_before;
@@ -42,31 +45,5 @@ if ( ! empty( $breadcrumb ) ) {
 	}
 
 	echo $wrap_after;
-
-//    if( is_product() ) {
-//        $permalinks = wc_get_permalink_structure();
-//        $current_title = end($breadcrumb)[0];
-//        if ( $_SERVER['HTTP_REFERER'] ) {
-//            $url_parts = explode( '/', trim( wp_parse_url( $_SERVER['HTTP_REFERER'] )['path'], '/' ) );
-//            $url = site_url() . '/' . $permalinks['category_base'];
-//            $breadcrumb = array(
-//                array( __( 'Homepage', 'woocommerce-multilingual' ), site_url(), ),
-//                array( __( 'Catalog', 'woocommerce' ), site_url() . $permalinks['product_base'] . '/', ),
-//            );
-//            foreach( $url_parts as $url_part ) {
-//                if( $term = get_term_by( 'slug', $url_part, 'product_cat' ) ) {
-//                    $url .= '/' . $url_part;
-//                    $breadcrumb[] = array( $term->name, $url );
-//                }
-//            }
-//            $breadcrumb[] = array( $current_title );
-//        } else {
-//            $breadcrumb = array(
-//                array( __( 'Homepage', 'woocommerce-multilingual' ), site_url(), ),
-//                array( __( 'Products', 'woocommerce-multilingual' ), site_url() . $permalinks['product_base'] . '/', ),
-//                array( $current_title ),
-//            );
-//        }
-//    }
 
 }

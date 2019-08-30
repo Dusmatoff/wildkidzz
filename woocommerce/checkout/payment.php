@@ -21,7 +21,7 @@ if (!is_ajax()) {
     do_action('woocommerce_review_order_before_payment');
 }
 ?>
-    <div class="payment-options">
+    <div class="payment-options woocommerce-checkout-payment">
         <div class="h6 title"><?php esc_html_e( 'Payment Option', 'wildkidzz' ) ?></div>
         <?php if (WC()->cart->needs_payment()) : ?>
             <div class="radiobox-wrapper check-payment-method">
@@ -51,7 +51,9 @@ if (!is_ajax()) {
 
             <?php do_action('woocommerce_review_order_before_submit'); ?>
 
-            <?php echo apply_filters('woocommerce_order_button_html', '<button type="submit" class="button alt" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr($order_button_text) . '" data-value="' . esc_attr($order_button_text) . '">' . esc_html($order_button_text) . '</button>'); // @codingStandardsIgnoreLine ?>
+            <div class="place-order">
+                <?php echo apply_filters('woocommerce_order_button_html', '<button type="submit" class="button size-2 style-2 full-width" name="woocommerce_checkout_place_order" id="place_order" value="' . esc_attr($order_button_text) . '" data-value="' . esc_attr($order_button_text) . '">' . esc_html($order_button_text) . '</button>'); // @codingStandardsIgnoreLine ?>
+            </div>
 
             <?php do_action('woocommerce_review_order_after_submit'); ?>
 

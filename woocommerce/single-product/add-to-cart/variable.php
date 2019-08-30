@@ -28,7 +28,7 @@ $variations_attr = function_exists('wc_esc_json') ? wc_esc_json($variations_json
 
 do_action('woocommerce_before_add_to_cart_form'); ?>
 
-    <form class="variations_form cart"
+    <form class="variations_form cart v-2"
           action="<?php echo esc_url(apply_filters('woocommerce_add_to_cart_form_action', $product->get_permalink())); ?>"
           method="post" enctype='multipart/form-data' data-product_id="<?php echo absint($product->get_id()); ?>"
           data-product_variations="<?php echo $variations_attr; // WPCS: XSS ok. ?>">
@@ -39,49 +39,24 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
             <p class="stock out-of-stock"><?php echo esc_html(apply_filters('woocommerce_out_of_stock_message', __('This product is currently out of stock and unavailable.', 'woocommerce'))); ?></p>
         <?php else : ?>
 
-        <?php
-        $colors = get_terms( 'pa_actual-color' );
-        if ( ! empty( $colors ) && ! is_wp_error( $colors ) ){
+        <div class="product-details">
+            <?php foreach ($attributes as $attribute_name => $options) : ?>
+                <div class="product-detail-section">
+                    <div class="product-option-label v-2"><label for="<?php echo esc_attr(sanitize_title($attribute_name)); ?>"><?php echo wc_attribute_label($attribute_name); // WPCS: XSS ok. ?></label>
+                    </div>
+                    <?php
+                    wc_dropdown_variation_attribute_options_by_attribute(array(
+                        'options' => $options,
+                        'attribute' => $attribute_name,
+                        'product' => $product,
+                    ));
 
-            echo '<div class="product-detail-color">';
-            echo '<span class="color-label product-option-label">Actual color:</span>';
-            echo '<div class="color-wrapp">';
-            foreach ( $colors as $color ) {
-                echo '<span class=""><i style="background: ' .$color->name. '"></i></span>';
-            }
-            echo '</div>';
-            echo '</div>';
-        }
-        ?>
+                    ?>
+                </div>
+            <?php endforeach; ?>
+            <?php echo ( '<div style="display: none">' ) . wp_kses_post(apply_filters('woocommerce_reset_variations_link', '<a class="reset_variations" style="display: none;" href="#">' . esc_html__('Clear', 'woocommerce') . '</a>')) . '</div>';?>
+        </div>
 
-        <?php
-        $colors = get_terms( 'pa_bed-size' );
-        if ( ! empty( $colors ) && ! is_wp_error( $colors ) ){
-
-            echo '<div class="choose-bed-size">';
-            echo '<span class="product-option-label">Bed size</span>';
-            echo '<div class="choose-block-wrapp">';
-            foreach ( $colors as $color ) {
-                echo '<span data-option-price="20">' .$color->name. '</span>';
-            }
-            echo '</div>';
-            echo '</div>';
-        }
-        ?>
-
-        <?php foreach ($attributes as $attribute_name => $options) : ?>
-            <div class="product-option-label"><label
-                        for="<?php echo esc_attr(sanitize_title($attribute_name)); ?>"><?php echo wc_attribute_label($attribute_name); // WPCS: XSS ok. ?></label>
-            </div>
-            <?php
-            wc_dropdown_variation_attribute_options(array(
-                'options' => $options,
-                'attribute' => $attribute_name,
-                'product' => $product,
-            ));
-            echo end($attribute_keys) === $attribute_name ? wp_kses_post(apply_filters('woocommerce_reset_variations_link', '<a class="reset_variations" href="#">' . esc_html__('Clear', 'woocommerce') . '</a>')) : '';
-            ?>
-        <?php endforeach; ?>
         <div class="product-detail-quantity">
             <div class="single_variation_wrap">
                 <?php
@@ -109,6 +84,11 @@ do_action('woocommerce_before_add_to_cart_form'); ?>
 
             <?php do_action('woocommerce_after_variations_form'); ?>
         </div>
+        <div class="add-cart-informer">
+			<i class="icon"></i>
+			<div class="cart-informer-text"><?php esc_html_e( 'The item has been added to your shopping cart', 'wildkidzz' ) ?></div>
+			<div class="button-close"><span></span></div>
+		</div>
     </form>
 
 <?php

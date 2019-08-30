@@ -11,18 +11,16 @@
 
 ?>
 <!DOCTYPE html>
-<html lang="nl">
+<html lang="<?php echo wpm_get_language(); ?>">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="format-detection" content="telephone=no" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <link rel="shortcut icon" href="<?php echo get_template_directory_uri(); ?>/img/favicon.ico" />
-    <title><?php the_title(); ?></title>
-    <link href="<?php echo get_template_directory_uri(); ?>/css/style-top.css" rel="stylesheet" type="text/css" />
     <?php wp_head(); ?>
 </head>
-<body>
+<body <?php body_class(); ?>>
 
 <!-- LOADER -->
 <div id="loader-wrapper"></div>
@@ -48,7 +46,7 @@
                                 while ( have_rows('phone', 'option') ) : the_row();
                             $phone_number = get_sub_field('phone_number');
                         ?>
-                        <a href="tel:<?php echo str_replace(array('(',')','-',' '), '', $phone_number); ?>" class="tel"><?php echo $phone_number; ?></a><br>
+                        <?php if($phone_number): ?><a href="tel:<?php echo str_replace(array('(',')','-',' '), '', $phone_number); ?>" class="tel"><?php echo $phone_number; ?></a><br><?php endif; ?>
                         <?php
                                 endwhile;
                             endif;
@@ -56,11 +54,10 @@
                         <?php if($contact_page_url): ?><a href="<?php echo $contact_page_url; ?>" class="contact"><?php esc_html_e( 'Contact Us', 'wildkidzz' ) ?></a><?php endif; ?>
                     </div>
                     <div class="language-block">
-                        <div class="lang-item">ND</div>
+                       <?php wlk_multilang_switcher(); ?>
                     </div>
-                    <div class="header-cart-block contains-products">
-                        <?php wildkidzz_woocommerce_cart_link(); ?>
-
+                    <div class="header-cart-block contains-products ">
+                            <?php wildkidzz_woocommerce_cart_link(); ?>
                     </div>
                 </div>
                 <div class="mobile-button"><span></span></div>
@@ -76,9 +73,12 @@
                     </nav>
                 </div>
             </div>
+
             <div class="header-cart">
                 <div class="cart-list-product-wrapp">
-                    <?php woocommerce_mini_cart(); ?>
+                    <div class="widget_shopping_cart_content">
+                        <?php woocommerce_mini_cart(); ?>
+                    </div>
                 </div>
             </div>
         </div>

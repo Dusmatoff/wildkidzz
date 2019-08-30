@@ -22,8 +22,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 global $product;
 $dimensions = wc_format_dimensions($product->get_dimensions(false));
 ?>
-<div class="product-text-size simple-text size-3"><p><?php esc_html_e( 'Dimensions', 'wildkidzz' ) ?> <?php echo $dimensions; ?></p></div>
-<div class="price-product-wrapp">
-    <span class="product-price"<?php echo $product->get_price_html(); ?></span>
+<?php if($dimensions): ?><div class="product-text-size simple-text size-3"><p><?php esc_html_e( 'Dimensions', 'wildkidzz' ) ?> <?php echo $dimensions; ?></p></div><?php endif; ?>
+<div class="price-product-wrapp ">
+    <span class="product-price js-ajax-price" data-product-id="<?php echo $product->get_id() ?>"><?php echo $product->get_price_html(); ?></span>
     <span class="product-price-desc"><?php esc_html_e( 'This amount is incl. VAT', 'wildkidzz' ) ?></span>
 </div>

@@ -26,14 +26,74 @@ blockquote p{
     font-family: 'Poppins', sans-serif;
     margin-bottom: 0px!important;
 }
-.breadcrumbs li {
+.breadcrumbs li,
+.breadcrumbs span{
     display: inline-block;
     font-size: 14px;
     line-height: 24px;
     color: #a3a3a3;
     font-weight: 400;
 }
+/*.breadcrumbs a{
+    position: relative;
+    padding-right: 15px;
+    padding-left: 15px;
+}*/
 .input-label span {
     color: #a3a3a3;
     font-family: 'Poppins', sans-serif;
 }
+div.wpcf7-response-output,
+.woocommerce-remove-coupon,
+#order_comments_field label,
+.in-stock{
+    display: none!important;
+}
+.page-numbers li {
+    position: relative;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 0 3px;
+}
+.page-numbers li.active span {
+    background: #fa9512;
+    color: #fff;
+    font-weight: 700;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 50px;
+    width: 46px;
+    height: 50px;
+    display: block;
+}
+div.wpcf7 .ajax-loader{
+    position: absolute;
+}
+.return-to-shop a{
+    color: #fff!important;
+}
+.return-to-shop a:hover{
+    color: #fa9512!important;
+}
+.return-to-shop a:before{
+    content: none;
+}
+.product-options ul li p{
+    color:#292929;
+    display: inline;
+}
+.lang-item:nth-child(1){
+    padding-right: 20px;
+}
+.lang-item .active{
+    color: #fa9512;
+}
+@media screen and (max-width: 768px){
+    .lmp_load_more_button{
+        padding-left: 20px;
+        padding-right: 20px;
+    }  
+}
+/*.wc-variation-selection-needed{
+    pointer-events: none;
+}*/

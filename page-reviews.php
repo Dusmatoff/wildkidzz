@@ -1,9 +1,5 @@
 <?php
 /**
- * Created by PhpStorm.
- * User: Dusmatoff
- * Date: 15.08.2019
- * Time: 15:58
  * Template Name: Reviews
  */
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
@@ -21,9 +17,9 @@ get_header();
                                 <h3 class="title h3 sm"><?php the_title(); ?></h3>
                             </div>
                         </div>
-                        <?php if (get_field('reviews_page_text')): ?>
+                        <?php $reviews_page_text = get_field('reviews_page_text'); if ($reviews_page_text): ?>
                             <div class="simple-text size-2">
-                                <p><?php the_field('reviews_page_text') ?></p>
+                                <p><?php echo $reviews_page_text; ?></p>
                             </div>
                         <?php endif; ?>
                     </div>
@@ -46,7 +42,7 @@ get_header();
                 <div class="col-12 col-xl-10 offset-xl-1">
                     <div class="reviews-wrapps">
                         <?php if ($the_query->have_posts()) : ?>
-                        <?php while ($the_query->have_posts()) : $the_query->the_post(); ?>
+                        <?php while ($the_query->have_posts()) : $the_query->the_post(); $review_author = get_field('review_author'); ?>
                             <div class="reviews-item">
                                 <div class="row align-items-lg-center">
                                     <div class="col-12 col-lg-5">
@@ -63,7 +59,7 @@ get_header();
                                                 <div class="simple-text size-2"><?php the_content(); ?></div>
                                             </div>
                                             <div class="review-author-date">
-                                                <?php if (get_field('review_author')): ?><div class="review-author"><?php the_field('review_author') ?></div><?php endif; ?>
+                                                <?php if ($review_author): ?><div class="review-author"><?php echo $review_author; ?></div><?php endif; ?>
                                                 <div class="review-date"><?php echo get_the_date('M, Y'); ?></div>
                                             </div>
                                         </div>
@@ -71,38 +67,29 @@ get_header();
                                 </div>
                             </div>
                         <?php endwhile; ?>
-
                     </div>
                     <div class="section-space size-4"></div>
                     <div class="custom-pagination">
                         <?php
-                        echo paginate_links( array(
+                        echo paginate_links(array(
                             'format'  => 'page/%#%',
                             'type'    => 'list',
                             //'current' => $paged,
                             'total'   => $the_query->max_num_pages,
-                            'show_all' => true,
                             'end_size'  => 3,
                             'mid_size' => 1,
                             'prev_next' => true,
-                            'prev_text' => '<span class="pagination-arrow arrow-left"></span>',
-                            'next_text' => '<span class="pagination-arrow arrow-right"></span>'
-                        ) );
+                            'prev_text' => '',
+                            'next_text' => ''
+                        ));
                         ?>
-                        <br>
-                        <ul>
-                            <li class="pagination-arrow arrow-left"><a href="#"></a></li>
-                            <li><a href="#">1</a></li>
-                            <li class="active"><a href="#">2</a></li>
-                            <li><a href="#">3</a></li>
-                            <li class="dott">...</li>
-                            <li><a href="#">20</a></li>
-                            <li class="pagination-arrow arrow-right"><a href="#"></a></li>
-                        </ul>
                     </div>
+                    <?php else: ?>
+                        <div class="simple-text size-2"><?php esc_html_e( 'Nothing found', 'wildkidzz' ) ?></div>
                     <?php endif; ?>
                 </div>
             </div>
+            <?php wp_reset_query(); ?>
         </div>
         <div class="section-space size-2"></div>
     </div>

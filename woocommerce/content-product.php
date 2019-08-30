@@ -25,7 +25,7 @@ if (empty($product) || !$product->is_visible()) {
 }
 $product_style = get_the_terms( get_the_ID(), 'product-style' );
 ?>
-<?php if (is_shop()): //show filter open container only in shop page  ?>
+<?php if(is_shop() || is_product_category()): ?>
 <div class="grid-item <?php foreach ($product_style as $term){ echo "product-style-" . $term->slug . " "; } ?>">
     <div class="col-12 col-sm-6 col-lg-4">
         <?php endif; ?>
@@ -69,9 +69,9 @@ $product_style = get_the_terms( get_the_ID(), 'product-style' );
              */
             do_action('woocommerce_after_shop_loop_item');
             ?>
+
         </div>
-        <?php if (is_shop()): ?>
+        <?php if(is_shop() || is_product_category()): ?>
     </div>
 </div>
-<?php endif;
-//show filter close container only in shop page ?>
+<?php endif; ?>

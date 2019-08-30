@@ -55,9 +55,7 @@ if ($upsells) : ?>
                                         wc_get_template_part('content', 'product'); ?>
                                     </div>
                                 <?php endforeach; ?>
-
                                 <?php woocommerce_product_loop_end(); ?>
-
                             </div>
                         </div>
                     </div>
@@ -66,13 +64,10 @@ if ($upsells) : ?>
             <div class="section-space size-3"></div>
         </div>
     </div>
-
     <!-- SEPARATOR SECTION -->
     <div class="section">
         <div class="separator color-2"></div>
         <div class="section-space size-3"></div>
     </div>
-
 <?php endif;
-
 wp_reset_postdata();

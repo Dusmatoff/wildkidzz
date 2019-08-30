@@ -19,7 +19,7 @@ if (!defined('ABSPATH')) {
     exit;
 }
 
-do_action('woocommerce_before_checkout_form', $checkout);
+//do_action('woocommerce_before_checkout_form', $checkout);
 
 // If checkout registration is disabled and not logged in, the user cannot checkout.
 if (!$checkout->is_registration_enabled() && $checkout->is_registration_required() && !is_user_logged_in()) {
@@ -65,8 +65,8 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                     <div class="order-wrapp-right-column">
                         <div class="order-top-caption">
                             <?php do_action('woocommerce_checkout_before_order_review_heading'); ?>
-                            <div class="h6 title">Your Order</div>
-                            <div class="change-order open-popup" data-rel="2">Edit</div>
+                            <div class="h6 title"><?php esc_html_e('Your Order', 'wildkidzz') ?></div>
+                            <div class="change-order open-popup" data-rel="2"><?php esc_html_e('Edit', 'wildkidzz') ?></div>
                         </div>
                         <?php do_action('woocommerce_checkout_before_order_review'); ?>
 
@@ -74,11 +74,13 @@ if (!$checkout->is_registration_enabled() && $checkout->is_registration_required
                             <?php do_action('woocommerce_checkout_order_review'); ?>
                         </div>
 
-
                         <?php do_action('woocommerce_checkout_after_order_review'); ?>
-
-
                     </div>
+                    <?php $privacy_text = get_field('privacy_text', 'option'); if($privacy_text): ?>
+                    <div class="pricacy-text">
+						<p><?php echo $privacy_text; ?></p>
+					</div>
+					<?php endif; ?>
                 </div>
             </div>
         </form>

@@ -50,6 +50,6 @@ if($position) { //if there's a dot in our soruce text do
         <div class="simple-text">
             <?php echo $other . '.'; ?>
         </div>
-        <span class="read-more">show more</span>
+        <span class="read-more"><?php esc_html_e( 'Show more', 'wildkidzz' ) ?></span>
     </div>
 </div>

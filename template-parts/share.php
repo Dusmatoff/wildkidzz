@@ -1,11 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: Dusmatoff
- * Date: 15.08.2019
- * Time: 16:52
- */
-?>
 <div class="social-block style-2">
     <span class="share-text"><?php esc_html_e( 'Share:', 'wildkidzz' ) ?></span>
     <ul>

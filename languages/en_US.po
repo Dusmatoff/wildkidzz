@@ -8,203 +8,187 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
-"Last-Translator:\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"PO-Revision-Date: 2019-08-29 11:09+0000\n"
+"Last-Translator: wildkidzz_admin <dusmatov9999@gmail.com>\n"
+"Language-Team: English (United States)\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: en_US\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.3.0; wp-5.2.2"
 
 #: functions.php
 msgid "Primary"
-msgstr ""
+msgstr "Primary"
 
 msgid "Footer"
-msgstr ""
+msgstr "Footer"
 
 msgid "Reviews"
-msgstr ""
+msgstr "Reviews"
 
 msgid "Review"
-msgstr ""
+msgstr "Review"
 
 msgid "Add review"
-msgstr ""
+msgstr "Add review"
 
 #: header.php
 msgid "Contact Us"
-msgstr ""
+msgstr "Contact Us"
 
 msgid "Go to Checkout"
-msgstr ""
+msgstr "Go to Checkout"
 
 #: footer.php
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 msgid "Customer Info"
-msgstr ""
+msgstr "Customer Info"
 
 msgid "Follow Us"
-msgstr ""
+msgstr "Follow Us"
 
 msgid "Site developed by"
-msgstr ""
+msgstr "Site developed by"
 
 msgid "Thank you!"
-msgstr ""
+msgstr "Thank you!"
 
 msgid "We will call you back during the day."
-msgstr ""
+msgstr "We will call you back during the day."
 
 msgid "Go Back"
-msgstr ""
+msgstr "Go Back"
 
 msgid "Editing Shopping cart"
-msgstr ""
-
-msgid "Select options"
-msgstr ""
-
-msgid "Please select some product options before adding this product to your cart."
-msgstr ""
+msgstr "Editing Shopping cart"
 
 msgid "Save Changes"
-msgstr ""
-
-msgid "Unavailable"
-msgstr ""
-
-msgid "This variation of product is currently out of stock and unavailable."
-msgstr ""
-
-msgid "Coupon error"
-msgstr ""
-
-msgid "Coupon code does not exists. Please try again."
-msgstr ""
+msgstr "Save Changes"
 
 #: 404.php
 msgid "Page not found"
-msgstr ""
+msgstr "Page not found"
 
 msgid "Sorry, but we have trouble finding the page you are requesting"
-msgstr ""
+msgstr "Sorry, but we have trouble finding the page you are requesting"
 
 msgid "Back to main page"
-msgstr ""
+msgstr "Back to main page"
 
 #: template-parts/share.php
 msgid "Share:"
-msgstr ""
+msgstr "Share:"
 
 #: woocommerce/single-product/tabs/tabs.php
 msgid "More Information"
-msgstr ""
+msgstr "More Information"
 
 #: woocommerce/single-product/price.php
 msgid "This amount is incl. VAT"
-msgstr ""
+msgstr "This amount is incl. VAT"
 
 msgid "Dimensions"
-msgstr ""
+msgstr "Dimensions"
 
 #: woocommerce/single-product/up-sells.php
 msgid "Other suggestions"
-msgstr ""
+msgstr "Other suggestions"
 
 #: woocommerce/content-single-product.php
 msgid "Fast delivery"
-msgstr ""
+msgstr "Fast delivery"
 
 msgid "Similar Products"
-msgstr ""
+msgstr "Similar Products"
 
 #: woocommerce/archive-product.php
 msgid "All"
-msgstr ""
+msgstr "All"
 
 msgid "Show more"
-msgstr ""
+msgstr "Show more"
 
 #: woocommerce/loop/price.php
 msgid "From"
-msgstr ""
+msgstr "From"
 
 #: woocommerce/cart/mini-cart.php
 msgid "Options"
-msgstr ""
+msgstr "Options"
 
 msgid "Subtotal"
-msgstr ""
+msgstr "Subtotal"
 
 msgid "The item has been added to your shopping cart"
-msgstr ""
+msgstr "The item has been added to your shopping cart"
 
 #: woocommerce/checkout/form-checkout.php
 msgid "Contact Info"
-msgstr ""
+msgstr "Contact Info"
 
 msgid "Promo code"
-msgstr ""
+msgstr "Promo code"
 
 msgid "Enter promo code"
-msgstr ""
+msgstr "Enter promo code"
 
 msgid "Payment Option"
-msgstr ""
+msgstr "Payment Option"
 
 msgid "Your Order"
-msgstr ""
+msgstr "Your Order"
 
 msgid "Edit"
-msgstr ""
+msgstr "Edit"
 
 #: woocommerce/checkout/thankyou.php
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 msgid "Thank you for purchase"
-msgstr ""
+msgstr "Thank you for purchase"
 
 msgid "Your order has been successfully completed"
-msgstr ""
+msgstr "Your order has been successfully completed"
 
 msgid "Order details"
-msgstr ""
+msgstr "Order details"
 
 msgid "Order Number"
-msgstr ""
+msgstr "Order Number"
 
 msgid "Name"
-msgstr ""
+msgstr "Name"
 
 msgid "Address"
-msgstr ""
+msgstr "Address"
 
 msgid "Shipping Cost"
-msgstr ""
+msgstr "Shipping Cost"
 
 msgid "Total"
-msgstr ""
+msgstr "Total"
 
 msgid "Print Order"
-msgstr ""
+msgstr "Print Order"
 
 #: woocommerce/checkout/review-order.php
 msgid "Order Notes"
-msgstr ""
+msgstr "Order Notes"
 
 msgid "(Optional)"
-msgstr ""
+msgstr "(Optional)"
 
 #: woocommerce/checkout/form-shipping.php
 msgid "Ship to a different address?"
-msgstr ""
+msgstr "Ship to a different address?"
 
 #: page-reviews.php
 msgid "Nothing found"
-msgstr ""
+msgstr "Nothing found"
 
-#: /woocommerce/global/quantity-input.php
+#: woocommerce/global/quantity-input.php
 msgid "Quantity"
-msgstr ""
-
+msgstr "Quantity"

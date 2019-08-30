@@ -16,14 +16,15 @@
  * @package WooCommerce/Templates
  * @version 3.7.0
  */
+
 defined( 'ABSPATH' ) || exit;
 
 do_action( 'woocommerce_before_mini_cart' ); ?>
 
 <?php if ( ! WC()->cart->is_empty() ) : ?>
+    <form class="woocommerce-cart-form--popup" action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post">
 
-    <form class="woocommerce-cart-form js-mc-edit-form"  action="<?php echo esc_url( wc_get_cart_url() ); ?>" method="post" >
-        <div class="woocommerce-mini-cart  <?php echo esc_attr( $args['list_class'] ); ?> cart_list product_list_widget cart-list-product js-mc-cart-list-product js-mc-cart-list-product">
+        <div class="woocommerce-mini-cart cart_list product_list_widget cart-list-product js-mc-cart-list-product">
             <?php
             do_action( 'woocommerce_before_mini_cart_contents' );
 
@@ -33,18 +34,17 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                 $_attributes = wc_get_formatted_cart_item_attributes($cart_item);
                 $_attribute_color = wc_get_formatted_cart_item_attributes_color($cart_item);
 
-
                 if ( $_product && $_product->exists() && $cart_item['quantity'] > 0 && apply_filters( 'woocommerce_widget_cart_item_visible', true, $cart_item, $cart_item_key ) ) {
                     $product_name      = apply_filters( 'woocommerce_cart_item_name', $_product->get_name(), $cart_item, $cart_item_key );
+                    //$thumbnail         = apply_filters( 'woocommerce_cart_item_thumbnail', $_product->get_image(), $cart_item, $cart_item_key );
                     $thumbnail = wp_get_attachment_image_src($_product->get_image_id())[0];
                     $product_price     = apply_filters( 'woocommerce_cart_item_price', WC()->cart->get_product_price( $_product ), $cart_item, $cart_item_key );
-                    $data_price = WC()->cart->get_product_price( $_product );
                     $product_permalink = apply_filters( 'woocommerce_cart_item_permalink', $_product->is_visible() ? $_product->get_permalink( $cart_item ) : '', $cart_item, $cart_item_key );
                     ?>
-                    <div class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?> cart-product-item">
+                    <div class="woocommerce-mini-cart-item <?php echo esc_attr( apply_filters( 'woocommerce_mini_cart_item_class', 'mini_cart_item', $cart_item, $cart_item_key ) ); ?> cart-product-item " data-price-product="<?php echo $_product->get_price(); ?>">
                         <div class="left-block">
                             <a href="<?php echo esc_url($product_permalink); ?>">
-                                <span class="bg bg-lazy-load" style="background-image: url(<?php echo $thumbnail; ?>);" data-bg="<?php echo $thumbnail; ?>"></span>
+                                <span class="bg bg-lazy-load" style="background-image: url(<?php echo get_template_directory_uri(); ?>/img/placeholder.jpg);" data-bg="<?php echo $thumbnail; ?>"></span>
                             </a>
                         </div>
                         <div class="right-block">
@@ -56,19 +56,19 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                                         <div class="color-wrapp site-base-bg site-base-<?php echo $aMeta['class']?><?php ?>"><i style="<?php echo $aMeta['style'] ?>"></i> <?php echo $_attribute_color['display']?><?php ?></div>
                                     <?php } ?>
                                 </div>
+
                                 <?php if(count($_attributes) > 0) { ?>
-                                <div class="product-options">
-                                    <div class="input-label with-icon"><?php esc_html_e( 'Options', 'wildkidzz' ) ?> <b></b></div>
-                                    <ul>
-                                        <?php foreach($_attributes as $attribute) { ?>
-                                            <li><?php echo $attribute['key'] ?>:  <span><?php echo $attribute['value'] ?></span>                           </li>
-                                        <?php } ?>
-                                    </ul>
-                                </div>
+                                    <div class="product-options">
+                                        <div class="input-label with-icon"> <?php esc_html_e( 'Options', 'wildkidzz' ) ?><b></b></div>
+                                        <ul>
+                                            <?php foreach($_attributes as $attribute) { ?>
+                                                <li><?php echo $attribute['key'] ?>:  <span><?php echo $attribute['value'] ?></span></li>
+                                            <?php } ?>
+                                        </ul>
+                                    </div>
                                 <?php } ?>
+
                             </div>
-
-
                             <div class="cost-amount">
                                 <?php
                                 if ( $_product->is_sold_individually() ) {
@@ -78,7 +78,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
 
                                     <div class="custom-input-number">
                                         <button type="button" class="decrement"><span></span></button>
-                                        <input type="number" id="<?php echo $_product->get_name() ?>" name="<?php echo 'cart['.$cart_item_key.'][qty]' ?>" class="input-field js-mc-quantity-input" step="1" value="<?php echo $cart_item['quantity']; ?>" min="1" max="<?php echo $_product->get_max_purchase_quantity(); ?>" readonly="">
+                                        <input type="number" id="<?php echo $_product->get_name() ?>" name="<?php echo 'cart['.$cart_item_key.'][qty]' ?>" class="input-field js-cart-edit-quantity-input" step="1" value="<?php echo $cart_item['quantity']; ?>" min="1" max="<?php echo $_product->get_max_purchase_quantity(); ?>" readonly="">
                                         <button type="button" class="increment"><span></span></button>
                                     </div>
 
@@ -88,12 +88,13 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                             </div>
                             <div class="cost-total">
                                 <?php
-                                echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
+                                    echo apply_filters( 'woocommerce_cart_item_subtotal', WC()->cart->get_product_subtotal( $_product, $cart_item['quantity'] ), $cart_item, $cart_item_key ); // PHPCS: XSS ok.
                                 ?>
                             </div>
+
                             <?php if(count($_attributes) > 0) { ?>
                                 <div class="product-options only-mobile">
-                                    <div class="input-label with-icon"><?php esc_html_e( 'Options', 'wildkidzz' ) ?> <b></b></div>
+                                    <div class="input-label with-icon"> <?php esc_html_e( 'Options', 'wildkidzz' ) ?><b></b></div>
                                     <ul>
                                         <?php foreach($_attributes as $attribute) { ?>
                                             <li><?php echo $attribute['key'] ?>:  <span><?php echo $attribute['value'] ?></span>                           </li>
@@ -101,6 +102,7 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
                                     </ul>
                                 </div>
                             <?php } ?>
+
                         </div>
                         <?php
                         echo apply_filters( // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -125,46 +127,21 @@ do_action( 'woocommerce_before_mini_cart' ); ?>
             ?>
         </div>
 
-        <input type="hidden" name="update_cart" value="Update cart"  >
+        <div class="cart-product-total">
+            <div class="cart-product-total">
+                <div class="product-total-wrapp">
+                    <div class="product-total-text"><?php esc_html_e( 'Subtotal', 'wildkidzz' ) ?></div>
+                    <div class="order-amount"><span><?php echo WC()->cart->get_cart_subtotal(); ?></span></div>
+                </div>
+            </div>
+
+            <button type="submit" class="button size-2 style-2 full-width " name="update_cart" value="Update cart"><span><?php esc_html_e( 'Save Changes', 'wildkidzz' ) ?></span></button>
+        </div>
+
 
         <?php wp_nonce_field( 'woocommerce-cart', 'woocommerce-cart-nonce' ); ?>
 
     </form>
-
-    <div class="bottom-popup-cart">
-        <div class="cart-product-total">
-            <div class="product-total-wrapp">
-                <div class="product-total-text"><?php esc_html_e( 'Subtotal', 'wildkidzz' ) ?></div>
-                <div class="order-amount"><span><?php echo WC()->cart->get_cart_subtotal(); ?></span></div>
-
-            </div>
-        </div>
-
-        <?php
-        $enable_free_shipping_info = get_field('enable_free_shipping_info', 'option');
-        $free_shipping_info_text = get_field('free_shipping_info_text', 'option');
-        $enable_fast_delivery_info = get_field('enable_fast_delivery_info', 'option');
-        if($enable_free_shipping_info || $enable_fast_delivery_info):
-            ?>
-            <div class="product-delivery-info">
-                <?php if($enable_free_shipping_info): ?>
-                    <div class="delivery-info-item">
-                        <img src="<?php echo get_template_directory_uri(); ?>/icon/delivery-truck-silhouette.svg" alt="">
-                        <span><?php echo($free_shipping_info_text); ?></span>
-                    </div>
-                <?php endif; ?>
-                <?php if($enable_fast_delivery_info): ?>
-                    <div class="delivery-info-item">
-                        <img src="<?php echo get_template_directory_uri(); ?>/icon/clock.svg" alt="">
-                        <span><?php esc_html_e( 'Fast delivery', 'wildkidzz' ) ?></span>
-                    </div>
-                <?php endif; ?>
-            </div>
-        <?php endif; ?>
-
-        <a href="<?php echo wc_get_checkout_url(); ?>" class="button size-2 style-2 full-width"><span><?php esc_html_e( 'Go to Checkout', 'wildkidzz' ) ?></span></a>
-    </div>
-
 <?php else : ?>
 
     <p class="woocommerce-mini-cart__empty-message"><?php esc_html_e( 'No products in the cart.', 'woocommerce' ); ?></p>

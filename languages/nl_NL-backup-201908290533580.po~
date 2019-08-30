@@ -8,43 +8,46 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
-"Last-Translator:\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"X-Generator: grunt-wp-i18n 0.5.4\n"
+"PO-Revision-Date: 2019-08-29 05:31+0000\n"
+"Last-Translator: wildkidzz_admin <dusmatov9999@gmail.com>\n"
+"Language-Team: Dutch\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Loco-Version: 2.3.0; wp-5.2.2"
 
 #: functions.php
 msgid "Primary"
-msgstr ""
+msgstr "Primair"
 
 msgid "Footer"
-msgstr ""
+msgstr "Footer"
 
 msgid "Reviews"
-msgstr ""
+msgstr "Beoordelingen"
 
 msgid "Review"
-msgstr ""
+msgstr "Beoordeling"
 
 msgid "Add review"
-msgstr ""
+msgstr "Voeg recensie toe"
 
 #: header.php
 msgid "Contact Us"
-msgstr ""
+msgstr "Neem contact met ons op"
 
 msgid "Go to Checkout"
-msgstr ""
+msgstr "Ga naar afrekenen"
 
 #: footer.php
 msgid "Contact"
-msgstr ""
+msgstr "Contact"
 
 msgid "Customer Info"
-msgstr ""
+msgstr "Klant info"
 
 msgid "Follow Us"
-msgstr ""
+msgstr "Volg ons"
 
 msgid "Site developed by"
 msgstr ""
@@ -56,82 +59,64 @@ msgid "We will call you back during the day."
 msgstr ""
 
 msgid "Go Back"
-msgstr ""
+msgstr "Ga terug"
 
 msgid "Editing Shopping cart"
-msgstr ""
-
-msgid "Select options"
-msgstr ""
-
-msgid "Please select some product options before adding this product to your cart."
-msgstr ""
+msgstr "Winkelwagen bewerken"
 
 msgid "Save Changes"
-msgstr ""
-
-msgid "Unavailable"
-msgstr ""
-
-msgid "This variation of product is currently out of stock and unavailable."
-msgstr ""
-
-msgid "Coupon error"
-msgstr ""
-
-msgid "Coupon code does not exists. Please try again."
-msgstr ""
+msgstr "Wijzigingen opslaan"
 
 #: 404.php
-msgid "Page not found"
-msgstr ""
+msgid "Page not found'"
+msgstr "Pagina niet gevonden"
 
 msgid "Sorry, but we have trouble finding the page you are requesting"
 msgstr ""
 
 msgid "Back to main page"
-msgstr ""
+msgstr "Terug naar hoofdpagina"
 
 #: template-parts/share.php
 msgid "Share:"
-msgstr ""
+msgstr "Delen:"
 
 #: woocommerce/single-product/tabs/tabs.php
 msgid "More Information"
-msgstr ""
+msgstr "Meer informatie"
 
 #: woocommerce/single-product/price.php
 msgid "This amount is incl. VAT"
 msgstr ""
 
 msgid "Dimensions"
-msgstr ""
+msgstr "Dimensies"
 
 #: woocommerce/single-product/up-sells.php
 msgid "Other suggestions"
-msgstr ""
+msgstr "Andere suggesties"
 
 #: woocommerce/content-single-product.php
 msgid "Fast delivery"
-msgstr ""
+msgstr "Snelle bezorging"
 
 msgid "Similar Products"
 msgstr ""
 
 #: woocommerce/archive-product.php
 msgid "All"
-msgstr ""
+msgstr "Allemaal"
 
 msgid "Show more"
 msgstr ""
 
 #: woocommerce/loop/price.php
 msgid "From"
-msgstr ""
+msgstr "Van"
 
 #: woocommerce/cart/mini-cart.php
 msgid "Options"
-msgstr ""
+msgstr "Opties"
 
 msgid "Subtotal"
 msgstr ""
@@ -141,26 +126,26 @@ msgstr ""
 
 #: woocommerce/checkout/form-checkout.php
 msgid "Contact Info"
-msgstr ""
+msgstr "Contact informatie"
 
 msgid "Promo code"
-msgstr ""
+msgstr "Promotiecode"
 
 msgid "Enter promo code"
-msgstr ""
+msgstr "Voer promotiecode in"
 
 msgid "Payment Option"
-msgstr ""
+msgstr "Betalingsmogelijkheid"
 
 msgid "Your Order"
 msgstr ""
 
 msgid "Edit"
-msgstr ""
+msgstr "Bewerk"
 
 #: woocommerce/checkout/thankyou.php
 msgid "Home"
-msgstr ""
+msgstr "Huis"
 
 msgid "Thank you for purchase"
 msgstr ""
@@ -169,42 +154,41 @@ msgid "Your order has been successfully completed"
 msgstr ""
 
 msgid "Order details"
-msgstr ""
+msgstr "Bestel Details"
 
 msgid "Order Number"
-msgstr ""
+msgstr "Bestellingsnummer"
 
 msgid "Name"
-msgstr ""
+msgstr "Naam"
 
 msgid "Address"
-msgstr ""
+msgstr "Adres"
 
 msgid "Shipping Cost"
-msgstr ""
+msgstr "Transportkosten"
 
 msgid "Total"
 msgstr ""
 
 msgid "Print Order"
-msgstr ""
+msgstr "Printopdracht"
 
 #: woocommerce/checkout/review-order.php
 msgid "Order Notes"
-msgstr ""
+msgstr "Bestel notities"
 
 msgid "(Optional)"
-msgstr ""
+msgstr "(Optioneel)"
 
 #: woocommerce/checkout/form-shipping.php
 msgid "Ship to a different address?"
-msgstr ""
+msgstr "Verzend naar een ander adres?"
 
 #: page-reviews.php
 msgid "Nothing found"
-msgstr ""
+msgstr "Niets gevonden"
 
-#: /woocommerce/global/quantity-input.php
+#: woocommerce/global/quantity-input.php
 msgid "Quantity"
-msgstr ""
-
+msgstr "Aantal stuks"

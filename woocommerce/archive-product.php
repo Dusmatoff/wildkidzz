@@ -33,6 +33,7 @@ do_action('woocommerce_before_main_content');
 $banner_img = get_field('banner_img', get_option('woocommerce_shop_page_id'));
 $banner_title = get_field('banner_title', get_option('woocommerce_shop_page_id'));
 $banner_subtitle = get_field('banner_subtitle', get_option('woocommerce_shop_page_id'));
+$product_count = 0;
 if ($banner_img):
     ?>
     <!-- MAIN BANNER -->
@@ -116,6 +117,7 @@ if ($banner_img):
                     if (wc_get_loop_prop('total')) {
                         while (have_posts()) {
                             the_post();
+                            $product_count++;
 
                             /**
                              * Hook: woocommerce_shop_loop.
@@ -127,8 +129,9 @@ if ($banner_img):
                             wc_get_template_part('content', 'product');
                         }
                     }
-
+                    echo $product_count > 6 ? $product_count : 'qq';
                     woocommerce_product_loop_end();
+
 
                     /**
                      * Hook: woocommerce_after_shop_loop.
@@ -154,11 +157,13 @@ if ($banner_img):
                     </div>
                 </div>
             </div>
+            <?php if($product_count > 6): ?>
             <div class="row show-more-products">
                 <div class="col-12">
-                    <div class="button"><span>Show more</span></div>
+                    <div class="button"><span><?php esc_html_e( 'Show more', 'wildkidzz' ) ?></span></div>
                 </div>
             </div>
+            <?php endif; ?>
         </div>
         <div class="section-space size-3"></div>
     </div>

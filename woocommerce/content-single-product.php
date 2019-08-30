@@ -40,8 +40,8 @@ if (post_password_required()) {
                         <div class="filter-list">
                             <div class="select-izotop-category"><?php esc_html_e('All', 'wildkidzz') ?></div>
                             <ul>
-                                <li data-filter="*" class="active all">
-                                    <span><?php esc_html_e('All', 'wildkidzz') ?></span></li>
+                                <li class="all">
+                                    <span onclick="window.location = 'shop'"><?php esc_html_e('All', 'wildkidzz') ?></span></li>
                                 <?php
                                 $taxonomy = 'product-style';
                                 $orderby = 'name';
@@ -66,7 +66,7 @@ if (post_password_required()) {
                                     //$svg_code = get_field('svg_code');
                                     $svg_code = term_description($product_style_id, 'product-style');
                                     //<img src="'. wp_get_attachment_url(get_woocommerce_term_meta( $cat->term_id, 'thumbnail_id', true )) .'"> Get cat thumbnail url
-                                    echo '<li data-filter=".product-style-' . $cat->slug . '"><span>' . $svg_code . $cat->name . '</span></li>';
+                                    echo '<li ><span onclick="window.location = \'/shop?izotop-category=' .$cat->slug.'\'">' . $svg_code . $cat->name . '</span></li>';
                                 }
                                 ?>
                             </ul>
@@ -167,15 +167,15 @@ if (post_password_required()) {
 
                             <?php
                             $enable_free_shipping_info = get_field('enable_free_shipping_info', 'option');
+                            $free_shipping_info_text = get_field('free_shipping_info_text', 'option');
                             $enable_fast_delivery_info = get_field('enable_fast_delivery_info', 'option');
                             if ($enable_free_shipping_info || $enable_fast_delivery_info):
                                 ?>
                                 <div class="product-delivery-info">
                                     <?php if ($enable_free_shipping_info): ?>
                                         <div class="delivery-info-item">
-                                            <img src="<?php echo get_template_directory_uri(); ?>/icon/delivery-truck-silhouette.svg"
-                                                 alt="">
-                                            <span><?php esc_html_e('Temporary free shipping throughout the Netherlands (Belgium € 20)', 'wildkidzz') ?></span>
+                                            <img src="<?php echo get_template_directory_uri(); ?>/icon/delivery-truck-silhouette.svg" alt="">
+                                            <span><?php echo($free_shipping_info_text); ?></span>
                                         </div>
                                     <?php endif; ?>
                                     <?php if ($enable_fast_delivery_info): ?>

@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Dusmatoff
- * Date: 15.08.2019
- * Time: 11:33
- */
 if (!defined('ABSPATH')) exit; // Exit if accessed directly
 // Check if Flexible Content have blocks
 if (have_rows('flexible_content')):
@@ -223,7 +217,7 @@ if (have_rows('flexible_content')):
                                 <div class="simple-item text-center">
                                     <div class="title-decor">
                                         <div class="title-wrapp">
-                                            <h3 class="title h3 sm"><?php esc_html_e('Reviews', 'wildkidzz') ?></h3>
+                                            <h3 class="title h3 sm"><?php echo $reviews_title; ?></h3>
                                         </div>
                                     </div>
                                 </div>
@@ -260,6 +254,7 @@ if (have_rows('flexible_content')):
                                 <?php
                                 endwhile;
                             endif;
+                            wp_reset_query();
                             ?>
                         </div>
                     </div>
@@ -308,8 +303,8 @@ if (have_rows('flexible_content')):
                                             <div class="separator"></div>
                                             <?php if ($any_questions_phone || $any_questions_date): ?>
                                                 <div class="tel-and-date">
-                                                    <a href="tel:<?php echo str_replace(array('(', ')', '-', ' '), '', $any_questions_phone); ?>"><?php echo $any_questions_phone; ?></a>
-                                                    <div class="date"><?php echo $any_questions_date; ?></div>
+                                                    <?php if($any_questions_phone): ?><a href="tel:<?php echo str_replace(array('(', ')', '-', ' '), '', $any_questions_phone); ?>"><?php echo $any_questions_phone; ?></a><?php endif; ?>
+                                                    <?php if($any_questions_date): ?><div class="date"><?php echo $any_questions_date; ?></div><?php endif; ?>
                                                 </div>
                                             <?php endif; ?>
                                         </div>

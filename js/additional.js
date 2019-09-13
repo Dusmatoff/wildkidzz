@@ -272,9 +272,9 @@ var update_mc_wc_div = function( html_str, preserve_notices ) {
     }
 
     // Remove errors
-    if ( ! preserve_notices ) {
+    /*if ( ! preserve_notices ) {
         $( '.woocommerce-error, .woocommerce-message, .woocommerce-info' ).remove();
-    }
+    }*/
 
     if ( $new_form.length === 0 ) {
         // If the checkout is also displayed on this page, trigger reload instead.
@@ -718,6 +718,7 @@ $(function () {
 
         $('#billing_country').val(val)
     });
+    
     $(document).on('change', '.update_single_button', function (e) {
         var $form = $(this).closest('.cart'),
         $btn = $form.find('.ajax_add_to_cart');
@@ -744,4 +745,17 @@ $(function () {
     });
 
     minicart.init();
+});
+
+$('#billing_first_name').change(function() {
+    $('#shipping_first_name').val($(this).val());
+});
+$('#billing_address_1').change(function() {
+    $('#shipping_address_1').val($(this).val());
+});
+$('#billing_postcode').change(function() {
+    $('#shipping_postcode').val($(this).val());
+});
+$('#billing_city').change(function() {
+    $('#shipping_city').val($(this).val());
 });
